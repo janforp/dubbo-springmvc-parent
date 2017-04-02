@@ -9,4 +9,5 @@
     <description>导入applicationContext文件列表</description>
     <import resource="dubbo-consumer.xml"/>
     <import resource="spring-mvc.xml"/>
+
 </beans>

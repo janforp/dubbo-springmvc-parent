@@ -7,4 +7,8 @@
 
 	<dubbo:service timeout="3000" interface="com.janita.mvc.common.service.IUserService" ref="userService"/>
 
+	<dubbo:application name="user"/>
+	<dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+	<dubbo:protocol name="dubbo" port="28083"/>
+
 </beans>

@@ -9,4 +9,5 @@
     <description>导入applicationContext文件列表</description>
     <import resource="user-provider.xml"/>
     <import resource="spring-mvc.xml"/>
+
 </beans>
