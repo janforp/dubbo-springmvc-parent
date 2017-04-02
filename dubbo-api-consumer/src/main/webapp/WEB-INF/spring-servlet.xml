@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!-- 自动扫描且只扫描@Controller -->
+    <context:component-scan base-package="com.janita.mvc.api" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+        <mvc:message-converters register-defaults="true">
+            <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+                <!--不要在response头中，输出那一长串的Accept-Charset-->
+                <property name="writeAcceptCharset" value="false"/>
+            </bean>
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 指定所上传文件的总大小不能超过512KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
+        <property name="maxUploadSize" value="524288"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <!-- 返回的视图模型数据需要经过jstl来处理 -->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- REST中根据URL后缀自动判定Content-Type及相应的View -->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="mediaTypes">
+            <value>
+                json=application/json
+                xml=application/xml
+            </value>
+        </property>
+    </bean>
+
+    <!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->
+    <mvc:default-servlet-handler/>
+</beans>
