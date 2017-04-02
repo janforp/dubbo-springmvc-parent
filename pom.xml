@@ -6,7 +6,10 @@
 	<groupId>com.janita.dubbo</groupId>
 	<artifactId>dubbo-springmvc-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>dubbo-common</module>
+    </modules>
+    <packaging>pom</packaging>
 
 	<name>dubbo-springmvc-parent</name>
 	<description>Demo project for Spring Boot</description>
