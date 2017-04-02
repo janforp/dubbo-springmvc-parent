@@ -21,4 +21,9 @@ public class UserController {
     public User getUserById(Long userId){
         return userService.getUserById(userId);
     }
+
+    @RequestMapping("/index")
+    public String index(){
+        return "index";
+    }
 }

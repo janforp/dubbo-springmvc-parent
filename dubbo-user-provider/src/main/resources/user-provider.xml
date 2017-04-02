@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 添加 DUBBO SCHEMA -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://www.springframework.org/schema/c"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+	<dubbo:application name="provider"></dubbo:application>
+	<dubbo:registry  protocol="zookeeper" address="zookeeper://127.0.0.1:2181" check="true"  ></dubbo:registry>
+	<dubbo:protocol name="dubbo" port="20802" />
+	<dubbo:provider timeout="3000" />
+
+	<bean id="userService" class="com.janita.mvc.user.service.UserServiceImpl"/>
 	<dubbo:service timeout="3000" interface="com.janita.mvc.common.service.IUserService" ref="userService"/>
-
-	<dubbo:application name="user"/>
-	<dubbo:registry address="zookeeper://127.0.0.1:2181"/>
-	<dubbo:protocol name="dubbo" port="28083"/>
 
 </beans>
