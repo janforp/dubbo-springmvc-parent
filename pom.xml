@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.janita.dubbo</groupId>
 	<artifactId>dubbo-springmvc-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -18,7 +17,7 @@
 
 	<properties>
 		<spring.version>3.2.9.RELEASE</spring.version>
-		<jackson.version>2.4.0</jackson.version>
+		<jackson.version>2.8.7</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>

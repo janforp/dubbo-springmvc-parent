@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/user")
 @ResponseBody
 @Api(value = "/user-provider",description = "提供者中的接口")
-public class UserController {
+public class ProvideUserController {
 
     @Autowired
     private IUserService userService;
