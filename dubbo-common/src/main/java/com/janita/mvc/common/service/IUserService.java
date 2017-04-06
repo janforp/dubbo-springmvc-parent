@@ -8,4 +8,10 @@ import com.janita.mvc.common.bean.User;
 public interface IUserService {
 
     User getUserById(Long userId);
+
+    User updateUser(User user);
+
+    User deleteUser(Long userId);
+
+    User addUser(User user);
 }

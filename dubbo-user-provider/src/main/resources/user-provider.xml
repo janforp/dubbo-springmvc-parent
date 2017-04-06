@@ -16,10 +16,10 @@
 	<dubbo:protocol name="dubbo" port="20802" />
 	<dubbo:provider timeout="3000" />
 
-	<bean id="userService" class="com.janita.mvc.user.service.UserServiceImpl"/>
+	<!--启动提供者项目的时候，注解扫描已经注入-->
+	<!--<bean id="userService" class="com.janita.mvc.user.service.UserServiceImpl"/>-->
 
 
-	<!--理论上能把下面的直接注入注释掉，但是实际上注释之后会报错-->
 	<dubbo:service timeout="3000" interface="com.janita.mvc.common.service.IUserService" ref="userService"/>
 
 </beans>
